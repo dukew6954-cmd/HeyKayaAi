@@ -11,19 +11,16 @@ const plans = [
     name: 'Starter',
     monthlyPrice: 29.99,
     annualPrice: 299.99, // 10 months worth (2 months free)
-    description: 'Perfect for small businesses getting started',
+    description: 'Perfect for small businesses that just need someone to always pick up the phone.',
     features: [
-      'Unlimited calls',
-      'Message-taking & voicemail transcription',
-      'Basic FAQs (up to 15)',
-      '1 calendar integration (e.g., Booksy/Calendly)',
-      'Email summaries after each call',
-      '24/7 answering',
-      'Transcripts',
-      'Call recordings',
-      'Spam block',
-      'Custom greeting',
-      'Bilingual support'
+      '24/7 AI Receptionist (inbound calls only)',
+      'Caller name & details captured in CRM',
+      'Spam/Robo-call filtering',
+      'Custom greeting & business info',
+      'Appointment booking via integrated calendar',
+      'Instant SMS & email confirmations to customers',
+      'Call summaries sent to your inbox',
+      '(All powered natively in GHL\'s AI Employee)'
     ],
     cta: 'Start Free Trial',
     href: '/contact',
@@ -33,18 +30,16 @@ const plans = [
     name: 'Professional',
     monthlyPrice: 59.99,
     annualPrice: 599.99, // 10 months worth (2 months free)
-    description: 'Most popular for growing businesses',
+    description: 'For growing businesses that want more than just call answering.',
     features: [
-      'Everything in Starter',
-      'SMS notifications + confirmation texts',
-      'Live call transfers (multiple destinations)',
-      'Multi-calendar + CRM sync (HubSpot/Clio/Housecall Pro)',
-      'Dashboard analytics (call volume, bookings)',
-      'Expanded FAQs (up to 50)',
-      'Priority support',
-      'Advanced call routing',
-      'Custom integrations',
-      'Team collaboration tools'
+      'Everything in Starter, plus:',
+      'Multi-channel messaging (SMS, email, webchat)',
+      'CRM + pipeline automation for follow-up',
+      'Custom logic workflows (e.g., route VIP clients to owner)',
+      'Real-time dashboard with call volume & booking data',
+      'Multi-calendar & CRM sync (Clio, Housecall Pro, Booksy, etc.)',
+      'Industry-specific FAQ handling for up to 50 questions',
+      '(Uses GHL Conversation AI + Workflow automations)'
     ],
     cta: 'Start Free Trial',
     href: '/contact',
@@ -54,18 +49,15 @@ const plans = [
     name: 'Growth',
     monthlyPrice: 149.99,
     annualPrice: 1499.99, // 10 months worth (2 months free)
-    description: 'For established businesses with advanced needs',
+    description: 'For busy, multi-location businesses that want full automation.',
     features: [
-      'Everything in Professional',
-      'Outbound reminders & follow-ups',
-      'Advanced workflows (conditional routing, forms)',
-      'Slack/Teams alerts, multi-user roles',
-      'Deeper analytics (conversion, sentiment trends)',
-      'Priority onboarding & support',
-      'Custom AI training',
-      'API access',
-      'White-label options',
-      'Dedicated account manager'
+      'Everything in Professional, plus:',
+      'Advanced workflow automation (lead nurturing, upsells)',
+      'AI review requests & response management',
+      'Content AI for automated blog posts or promos',
+      'Funnel AI for building sales/booking pages',
+      'Multi-user roles & team notifications (Slack/Teams)',
+      'Deeper analytics (conversion tracking, sentiment)'
     ],
     cta: 'Start Free Trial',
     href: '/contact',
@@ -224,8 +216,14 @@ export function PricingSection() {
                 <ul className="space-y-4 mb-8">
                   {plan.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-start space-x-3">
-                      <Check className="w-5 h-5 text-teal-500 mt-0.5 flex-shrink-0" />
-                      <span className="text-gray-700">{feature}</span>
+                      {feature.startsWith('Everything in') || feature.includes('(All powered') || feature.includes('(Uses GHL') ? (
+                        <span className="text-gray-500 text-sm font-medium">{feature}</span>
+                      ) : (
+                        <>
+                          <Check className="w-5 h-5 text-teal-500 mt-0.5 flex-shrink-0" />
+                          <span className="text-gray-700">{feature}</span>
+                        </>
+                      )}
                     </li>
                   ))}
                 </ul>
@@ -317,15 +315,15 @@ export function PricingSection() {
                 <div className="w-12 h-12 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Check className="w-6 h-6 text-teal-600" />
                 </div>
-                <h4 className="font-semibold text-gray-900 mb-2">Bilingual Support</h4>
-                <p className="text-gray-600 text-sm">English and Spanish conversations</p>
+                <h4 className="font-semibold text-gray-900 mb-2">GHL Integration</h4>
+                <p className="text-gray-600 text-sm">Seamlessly integrated with GoHighLevel CRM</p>
               </div>
               <div>
                 <div className="w-12 h-12 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Check className="w-6 h-6 text-teal-600" />
                 </div>
-                <h4 className="font-semibold text-gray-900 mb-2">Spam Protection</h4>
-                <p className="text-gray-600 text-sm">Advanced filtering blocks unwanted calls</p>
+                <h4 className="font-semibold text-gray-900 mb-2">AI-Powered</h4>
+                <p className="text-gray-600 text-sm">Advanced AI handles calls with human-like conversations</p>
               </div>
             </div>
           </div>
