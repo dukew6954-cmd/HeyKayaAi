@@ -14,7 +14,7 @@ export function AnnouncementBar() {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="bg-gradient-to-r from-teal-500 via-emerald-500 to-teal-600 text-white text-center py-2 px-4 relative overflow-hidden"
+      className="fixed top-0 left-0 right-0 z-60 bg-gradient-to-r from-teal-500 via-emerald-500 to-teal-600 text-white text-center py-2 px-4 relative overflow-hidden"
     >
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
