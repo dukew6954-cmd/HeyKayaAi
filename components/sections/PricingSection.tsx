@@ -19,8 +19,7 @@ const plans = [
       'Custom greeting & business info',
       'Appointment booking via integrated calendar',
       'Instant SMS & email confirmations to customers',
-      'Call summaries sent to your inbox',
-      '(All powered natively in GHL\'s AI Employee)'
+      'Call summaries sent to your inbox'
     ],
     cta: 'Start Free Trial',
     href: '/contact',
@@ -314,8 +313,8 @@ export function PricingSection() {
                 <div className="w-12 h-12 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Check className="w-6 h-6 text-teal-600" />
                 </div>
-                <h4 className="font-semibold text-gray-900 mb-2">GHL Integration</h4>
-                <p className="text-gray-600 text-sm">Seamlessly integrated with GoHighLevel CRM</p>
+                <h4 className="font-semibold text-gray-900 mb-2">CRM Integration</h4>
+                <p className="text-gray-600 text-sm">Seamlessly integrated with popular CRM systems</p>
               </div>
               <div>
                 <div className="w-12 h-12 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4">
