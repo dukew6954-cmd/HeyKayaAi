@@ -22,7 +22,7 @@ const plans = [
       'Call summaries sent to your inbox'
     ],
     cta: 'Start Free Trial',
-    href: '/contact',
+    href: 'https://link.fastpaydirect.com/payment-link/68991c42cb078a78312b30ad',
     popular: false
   },
   {
