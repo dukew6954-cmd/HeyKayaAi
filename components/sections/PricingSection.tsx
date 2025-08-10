@@ -38,8 +38,7 @@ const plans = [
       'Custom logic workflows (e.g., route VIP clients to owner)',
       'Real-time dashboard with call volume & booking data',
       'Multi-calendar & CRM sync (Clio, Housecall Pro, Booksy, etc.)',
-      'Industry-specific FAQ handling for up to 50 questions',
-      '(Uses GHL Conversation AI + Workflow automations)'
+      'Industry-specific FAQ handling for up to 50 questions'
     ],
     cta: 'Start Free Trial',
     href: '/contact',
