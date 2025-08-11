@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button'
 import { Check, Star, ArrowRight, Sparkles } from 'lucide-react'
 import Link from 'next/link'
 import { useState } from 'react'
+import { GHLFormModal } from '@/components/GHLFormModal'
 
 const plans = [
   {
@@ -22,7 +23,7 @@ const plans = [
       'Call summaries sent to your inbox'
     ],
     cta: 'Start Free Trial',
-    href: 'https://link.fastpaydirect.com/payment-link/68991c42cb078a78312b30ad',
+    href: '/contact',
     popular: false
   },
   {
@@ -65,6 +66,7 @@ const plans = [
 
 export function PricingSection() {
   const [billingCycle, setBillingCycle] = useState<'monthly' | 'annual'>('monthly')
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   const getPrice = (plan: typeof plans[0]) => {
     return billingCycle === 'monthly' ? plan.monthlyPrice : plan.annualPrice
@@ -78,6 +80,10 @@ export function PricingSection() {
     const monthlyTotal = plan.monthlyPrice * 12
     const annualPrice = plan.annualPrice
     return monthlyTotal - annualPrice
+  }
+
+  const handleStartTrial = () => {
+    setIsModalOpen(true)
   }
 
   return (
@@ -231,12 +237,10 @@ export function PricingSection() {
                   variant={plan.popular ? "gradient" : "outline"}
                   size="lg"
                   className="w-full"
-                  asChild
+                  onClick={handleStartTrial}
                 >
-                  <Link href={plan.href}>
-                    {plan.cta}
-                    <ArrowRight className="ml-2 w-4 h-4" />
-                  </Link>
+                  {plan.cta}
+                  <ArrowRight className="ml-2 w-4 h-4" />
                 </Button>
               </div>
             </motion.div>
@@ -327,6 +331,9 @@ export function PricingSection() {
           </div>
         </motion.div>
       </div>
+
+      {/* GHL Form Modal */}
+      <GHLFormModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </section>
   )
 }
