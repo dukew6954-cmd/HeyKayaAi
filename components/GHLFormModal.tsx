@@ -85,12 +85,12 @@ export function GHLFormModal({ isOpen, onClose }: GHLFormModalProps) {
             </div>
 
             {/* Form Container */}
-            <div className="pt-20 h-full">
+            <div className="pt-20 h-full overflow-y-auto">
               <iframe
                 src="https://api.leadconnectorhq.com/widget/form/722YqDR6AUUvWfGWY1Lw"
-                style={{ width: '100%', height: '100%', border: 'none' }}
-                id="popup-722YqDR6AUUvWfGWY1Lw"
-                data-layout="{'id':'POPUP'}"
+                style={{ width: '100%', height: '823px', border: 'none', borderRadius: '3px' }}
+                id="inline-722YqDR6AUUvWfGWY1Lw"
+                data-layout="{'id':'INLINE'}"
                 data-trigger-type="alwaysShow"
                 data-trigger-value=""
                 data-activation-type="alwaysActivated"
@@ -98,8 +98,8 @@ export function GHLFormModal({ isOpen, onClose }: GHLFormModalProps) {
                 data-deactivation-type="neverDeactivate"
                 data-deactivation-value=""
                 data-form-name="Getting Started Form"
-                data-height="100%"
-                data-layout-iframe-id="popup-722YqDR6AUUvWfGWY1Lw"
+                data-height="823"
+                data-layout-iframe-id="inline-722YqDR6AUUvWfGWY1Lw"
                 data-form-id="722YqDR6AUUvWfGWY1Lw"
                 title="Getting Started Form"
               />
