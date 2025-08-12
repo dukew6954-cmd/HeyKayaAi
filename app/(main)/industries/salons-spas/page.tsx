@@ -1,4 +1,6 @@
-import { Metadata } from 'next'
+'use client'
+
+
 import { motion } from 'framer-motion'
 import { 
   Scissors, 
@@ -16,11 +18,7 @@ import {
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
-export const metadata: Metadata = {
-  title: 'Salons & Spas - AI Receptionist for Beauty & Wellness | Pavro',
-  description: 'Transform your salon or spa with AI-powered appointment booking, customer service, and marketing automation. Never miss a booking again.',
-  keywords: 'salon AI, spa automation, beauty appointment booking, salon receptionist, spa management, beauty business automation',
-}
+// Metadata moved to layout or handled by parent component
 
 const challenges = [
   {

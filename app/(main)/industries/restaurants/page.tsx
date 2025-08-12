@@ -1,4 +1,5 @@
-import { Metadata } from 'next'
+'use client'
+
 import { motion } from 'framer-motion'
 import { 
   Utensils, 
@@ -18,11 +19,7 @@ import {
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
-export const metadata: Metadata = {
-  title: 'Restaurants & Catering - AI Receptionist for Food Service | Pavro',
-  description: 'Serve up better customer service. Pavro\'s AI handles reservation management, catering inquiries, and takeout orders for restaurants.',
-  keywords: 'restaurant AI, catering receptionist, reservation management, takeout orders, restaurant automation, food service AI',
-}
+// Metadata moved to layout or handled by parent component
 
 const challenges = [
   {

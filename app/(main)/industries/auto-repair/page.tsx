@@ -1,4 +1,5 @@
-import { Metadata } from 'next'
+'use client'
+
 import { motion } from 'framer-motion'
 import { 
   Car, 
@@ -17,12 +18,6 @@ import {
   AlertTriangle
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-
-export const metadata: Metadata = {
-  title: 'Auto Repair - AI Receptionist for Automotive Services | Pavro',
-  description: 'Rev up your customer service. Pavro\'s AI handles emergency towing, service scheduling, and parts availability for auto repair shops.',
-  keywords: 'auto repair AI, automotive receptionist, emergency towing, service scheduling, auto shop automation, car repair AI',
-}
 
 const challenges = [
   {

@@ -1,4 +1,5 @@
-import { Metadata } from 'next'
+'use client'
+
 import { motion } from 'framer-motion'
 import { 
   Scale, 
@@ -15,12 +16,6 @@ import {
   Star
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-
-export const metadata: Metadata = {
-  title: 'Law Firms - AI Receptionist for Legal Practices | Pavro',
-  description: 'Never miss client calls or consultations. Pavro\'s AI receptionist handles client intake, scheduling, and emergency calls for law firms.',
-  keywords: 'law firm AI, legal receptionist, client intake automation, law practice management, legal scheduling, attorney AI assistant',
-}
 
 const challenges = [
   {

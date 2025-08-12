@@ -1,4 +1,5 @@
-import { Metadata } from 'next'
+'use client'
+
 import { motion } from 'framer-motion'
 import { 
   Dumbbell, 
@@ -17,12 +18,6 @@ import {
   Target
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-
-export const metadata: Metadata = {
-  title: 'Fitness Studios - AI Receptionist for Gyms & Fitness | Pavro',
-  description: 'Build strength in customer service. Pavro\'s AI handles class scheduling, membership inquiries, and personal training coordination for fitness studios.',
-  keywords: 'fitness AI, gym receptionist, class scheduling, membership management, fitness studio automation, gym AI assistant',
-}
 
 const challenges = [
   {

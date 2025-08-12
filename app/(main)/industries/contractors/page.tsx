@@ -1,4 +1,5 @@
-import { Metadata } from 'next'
+'use client'
+
 import { motion } from 'framer-motion'
 import { 
   Wrench, 
@@ -17,12 +18,6 @@ import {
   Truck
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-
-export const metadata: Metadata = {
-  title: 'Contractors - AI Receptionist for Construction & Home Services | Pavro',
-  description: 'Handle emergency calls 24/7. Pavro\'s AI manages service scheduling, emergency dispatch, and customer service for contractors.',
-  keywords: 'contractor AI, construction receptionist, emergency dispatch, service scheduling, contractor automation, home services AI',
-}
 
 const challenges = [
   {
