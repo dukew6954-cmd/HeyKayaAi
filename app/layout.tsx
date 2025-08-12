@@ -19,43 +19,43 @@ const manrope = Manrope({
 
 export const metadata: Metadata = {
   title: {
-    default: 'HeyKayaAI - AI Receptionist | Never Miss Another Call',
-    template: '%s | HeyKayaAI'
+    default: 'Pavro - All-in-One Business Automation Platform',
+    template: '%s | Pavro'
   },
-      description: 'HeyKayaAI answers, books, and texts back—24/7. Friendly, bilingual, and ready to work. Start your 30-day free trial today.',
-  keywords: ['AI receptionist', 'virtual assistant', 'call answering', 'appointment booking', 'customer service', 'business automation'],
-  authors: [{ name: 'HeyKayaAI' }],
-  creator: 'HeyKayaAI',
-  publisher: 'HeyKayaAI',
+  description: 'Pavro automates your entire business workflow - from lead capture to customer service. Save hours daily and scale your operations with intelligent automation.',
+  keywords: ['business automation', 'workflow automation', 'lead capture', 'customer service', 'business platform', 'automation tools'],
+  authors: [{ name: 'Pavro' }],
+  creator: 'Pavro',
+  publisher: 'Pavro',
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('https://heykaya.ai'),
+  metadataBase: new URL('https://pavro.ai'),
   alternates: {
     canonical: '/',
   },
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://heykaya.ai',
-    title: 'HeyKayaAI - AI Receptionist | Never Miss Another Call',
-    description: 'HeyKayaAI answers, books, and texts back—24/7. Friendly, bilingual, and ready to work. Start your 30-day free trial today.',
-    siteName: 'HeyKayaAI',
+    url: 'https://pavro.ai',
+    title: 'Pavro - All-in-One Business Automation Platform',
+    description: 'Pavro automates your entire business workflow - from lead capture to customer service. Save hours daily and scale your operations with intelligent automation.',
+    siteName: 'Pavro',
     images: [
       {
         url: '/api/og',
         width: 1200,
         height: 630,
-        alt: 'HeyKayaAI - AI Receptionist',
+        alt: 'Pavro - Business Automation Platform',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'HeyKayaAI - AI Receptionist | Never Miss Another Call',
-    description: 'HeyKayaAI answers, books, and texts back—24/7. Friendly, bilingual, and ready to work.',
+    title: 'Pavro - All-in-One Business Automation Platform',
+    description: 'Pavro automates your entire business workflow - from lead capture to customer service. Save hours daily and scale your operations with intelligent automation.',
     images: ['/api/og'],
   },
   robots: {

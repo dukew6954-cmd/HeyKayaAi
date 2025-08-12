@@ -1,8 +1,7 @@
 'use client'
 
-import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
-import { Phone, Play, ArrowRight } from 'lucide-react'
+import { Play, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 
 export function HeroSection() {
@@ -19,7 +18,7 @@ export function HeroSection() {
           </div>
 
           {/* Main Headline */}
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold font-display text-gray-900 mb-6 leading-tight">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 leading-tight">
             Replace 10+ Business
             <br />
             <span className="bg-gradient-to-r from-teal-500 via-emerald-500 to-teal-600 bg-clip-text text-transparent">

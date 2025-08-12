@@ -1,0 +1,5 @@
+[33m75cf4ee[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m Add separate pages for Features, AI Tools, Integrations, and Analytics - Fix white screen issue by simplifying HeroSection animations
+[33mb04bb61[m Add comprehensive Neon Auth integration with JWT authentication, role-based access control, and Netlify optimization
+[33m24a88d2[m fix API routes and add test endpoint
+[33m4cb8cb8[m Fix Prisma client initialization for Netlify deployment with singleton pattern and proper build scripts
+[33m3ce7170[m Fix NextAuth adapter compatibility and Prisma client generation
