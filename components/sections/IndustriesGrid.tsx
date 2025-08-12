@@ -1,7 +1,9 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Phone, Calendar, MessageSquare, Shield, Zap, Users } from 'lucide-react'
+import { Phone, Calendar, MessageSquare, Shield, Zap, Users, ArrowRight } from 'lucide-react'
+import Link from 'next/link'
+import { Button } from '@/components/ui/button'
 
 const industries = [
   {
@@ -287,8 +289,21 @@ export function IndustriesGrid() {
               </div>
             </div>
 
+            {/* Navigation Button */}
+            <div className="mt-6 pt-4 border-t border-gray-100">
+              <Button 
+                asChild 
+                className="w-full bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-600 hover:to-emerald-600 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-300 group-hover:shadow-lg"
+              >
+                <Link href={`/industries/${industry.id}`}>
+                  Learn More
+                  <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                </Link>
+              </Button>
+            </div>
+
             {/* Hover Effect */}
-            <div className="mt-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
               <div className="w-full h-1 bg-gradient-to-r from-teal-500 to-emerald-500 rounded-full"></div>
             </div>
           </div>
