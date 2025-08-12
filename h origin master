@@ -1,0 +1,3 @@
+[33me66fc57[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m)[m Fix Next.js version compatibility for Netlify deployment
+[33md220312[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m Fix deployment issues and update branding to HeyKaya
+[33m1236cac[m Fix build error: Remove duplicate blog page - Deleted old app/blog/page.tsx to resolve routing conflict - Kept new app/(main)/blog/page.tsx with review management content - This fixes the 'two parallel pages that resolve to the same path' error
