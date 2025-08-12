@@ -21,7 +21,7 @@ const valueProps = [
     icon: Zap,
     title: "All-in-One Platform",
     description: "Replace 10+ business tools with one comprehensive platform. No more juggling between Calendly, Mailchimp, Podium, and other subscriptions.",
-            features: ["Custom branded platform", "Unified dashboard", "Single login"]
+            features: ["Custom branded platform", "Unified dashboard", "Seamless integration"]
   },
   {
     icon: Clock,

@@ -5,7 +5,6 @@ import { Inter, Manrope } from 'next/font/google'
 import './globals.css'
 import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
-import { SessionProvider } from '@/components/SessionProvider'
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -87,9 +86,7 @@ export default function RootLayout({
         <link rel="manifest" href="/manifest.json" />
       </head>
       <body className={`${inter.className} antialiased`}><StackProvider app={stackServerApp}><StackTheme>
-        <SessionProvider>
-          {children}
-        </SessionProvider>
+        {children}
       </StackTheme></StackProvider></body>
     </html>
   )

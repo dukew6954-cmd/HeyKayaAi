@@ -1,5 +1,0 @@
-[33m4cb8cb8[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m Fix Prisma client initialization for Netlify deployment with singleton pattern and proper build scripts
-[33m3ce7170[m Fix NextAuth adapter compatibility and Prisma client generation
-[33m75b29bb[m Fix NextAuth type errors by extending types with custom properties
-[33m10f166e[m Add comprehensive dashboard with authentication, analytics, and call management
-[33m79dffa1[m Add complete authentication system with database schema and auth pages
