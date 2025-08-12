@@ -1,4 +1,6 @@
-import { Metadata } from 'next'
+'use client'
+
+
 import { motion } from 'framer-motion'
 import { 
   Heart, 
@@ -17,11 +19,7 @@ import {
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
-export const metadata: Metadata = {
-  title: 'Dental - AI Receptionist for Dental Practices | Pavro',
-  description: 'Smile-worthy customer service. Pavro\'s HIPAA-compliant AI handles patient scheduling, insurance verification, and emergency calls for dental practices.',
-  keywords: 'dental AI, dental receptionist, patient scheduling, HIPAA compliant, dental practice automation, dental office AI',
-}
+// Metadata moved to layout or handled by parent component
 
 const challenges = [
   {

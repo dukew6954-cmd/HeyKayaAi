@@ -1,4 +1,6 @@
-import { Metadata } from 'next'
+'use client'
+
+
 import { motion } from 'framer-motion'
 import { 
   Home, 
@@ -17,11 +19,7 @@ import {
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
-export const metadata: Metadata = {
-  title: 'Real Estate - AI Receptionist for Agents & Brokers | Pavro',
-  description: 'Close deals, not miss calls. Pavro\'s AI handles lead qualification, showing scheduling, and client inquiries for real estate professionals.',
-  keywords: 'real estate AI, agent receptionist, lead qualification, showing scheduling, real estate automation, property management AI',
-}
+// Metadata moved to layout or handled by parent component
 
 const challenges = [
   {
