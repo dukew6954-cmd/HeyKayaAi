@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 import { motion } from 'framer-motion'
 import { 
-  Tooth, 
+  Heart, 
   Calendar, 
   Users, 
   Phone, 
@@ -13,7 +13,6 @@ import {
   Shield,
   FileText,
   Star,
-  Heart,
   DollarSign
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
@@ -49,7 +48,7 @@ const challenges = [
 
 const solutions = [
   {
-    icon: Tooth,
+    icon: Heart,
     title: "HIPAA-Compliant Patient Intake",
     description: "Secure, compliant dental scheduling with automatic insurance verification",
     features: ["HIPAA-compliant conversations", "Insurance verification", "Dental history collection", "Appointment scheduling"]
@@ -281,7 +280,7 @@ export default function DentalPage() {
                 className="bg-white p-8 rounded-2xl shadow-lg"
               >
                 <div className="flex items-center mb-4">
-                  <Tooth className="w-6 h-6 text-cyan-500 mr-2" />
+                  <Heart className="w-6 h-6 text-cyan-500 mr-2" />
                   <div className="flex text-yellow-500">
                     {[...Array(5)].map((_, i) => (
                       <Star key={i} className="w-5 h-5 fill-current" />
