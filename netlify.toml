@@ -12,6 +12,11 @@
 
 # Handle Next.js routing properly
 [[redirects]]
-  from = "/*"
-  to = "/index.html"
+  from = "/_next/*"
+  to = "/_next/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/api/*"
+  to = "/api/:splat"
   status = 200
