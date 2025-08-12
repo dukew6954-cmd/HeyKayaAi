@@ -1,0 +1,308 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  name          String?
+  password      String
+  role          UserRole  @default(USER)
+  isActive      Boolean   @default(true)
+  emailVerified DateTime?
+  image         String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  // Relations
+  businesses    Business[]
+  sessions      Session[]
+  accounts      Account[]
+  calls         Call[]
+  conversations Conversation[]
+  notifications Notification[]
+
+  @@map("users")
+}
+
+model Business {
+  id          String   @id @default(cuid())
+  name        String
+  phoneNumber String   @unique
+  industry    String?
+  website     String?
+  address     String?
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  calls       Call[]
+  conversations Conversation[]
+  settings    BusinessSettings?
+  faqs        FAQ[]
+  workflows   Workflow[]
+
+  @@map("businesses")
+}
+
+model BusinessSettings {
+  id                    String   @id @default(cuid())
+  businessId            String   @unique
+  business              Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  
+  // AI Settings
+  aiGreeting            String   @default("Hello! Thank you for calling. How can I help you today?")
+  aiPersonality         String   @default("Professional and friendly")
+  language              String   @default("English")
+  
+  // Call Settings
+  callRecording         Boolean  @default(true)
+  voicemailEnabled      Boolean  @default(true)
+  spamFiltering         Boolean  @default(true)
+  
+  // Notification Settings
+  emailNotifications    Boolean  @default(true)
+  smsNotifications      Boolean  @default(true)
+  slackWebhook          String?
+  
+  // Calendar Integration
+  calendarType          CalendarType @default(NONE)
+  calendarUrl           String?
+  
+  // CRM Integration
+  crmType               CRMType  @default(NONE)
+  crmApiKey             String?
+  crmUrl                String?
+  
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+
+  @@map("business_settings")
+}
+
+model Call {
+  id            String      @id @default(cuid())
+  businessId    String
+  business      Business    @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  
+  // Call Details
+  callerNumber  String
+  callerName    String?
+  duration      Int?        // in seconds
+  status        CallStatus  @default(INCOMING)
+  direction     CallDirection @default(INBOUND)
+  
+  // AI Processing
+  aiTranscript  String?
+  aiSummary     String?
+  aiSentiment   Sentiment?
+  aiIntent      String?
+  
+  // Recording
+  recordingUrl  String?
+  transcription String?
+  
+  // Metadata
+  tags          String[]    @default([])
+  notes         String?
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+
+  // Relations
+  conversations Conversation[]
+  userId        String?
+  user          User?        @relation(fields: [userId], references: [id])
+
+  @@map("calls")
+}
+
+model Conversation {
+  id        String   @id @default(cuid())
+  callId    String
+  call      Call     @relation(fields: [callId], references: [id], onDelete: Cascade)
+  
+  businessId String
+  business   Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  
+  userId    String?
+  user      User?    @relation(fields: [userId], references: [id])
+  
+  // Message Details
+  role      MessageRole
+  content   String
+  timestamp DateTime @default(now())
+  
+  // AI Processing
+  aiProcessed Boolean @default(false)
+  aiResponse  String?
+
+  @@map("conversations")
+}
+
+model FAQ {
+  id          String   @id @default(cuid())
+  businessId  String
+  business    Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  
+  question    String
+  answer      String
+  category    String?
+  isActive    Boolean  @default(true)
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("faqs")
+}
+
+model Workflow {
+  id          String   @id @default(cuid())
+  businessId  String
+  business    Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  
+  name        String
+  description String?
+  trigger     WorkflowTrigger
+  conditions  Json     // Store workflow conditions as JSON
+  actions     Json     // Store workflow actions as JSON
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("workflows")
+}
+
+model Notification {
+  id        String           @id @default(cuid())
+  userId    String
+  user      User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  type      NotificationType
+  title     String
+  message   String
+  isRead    Boolean          @default(false)
+  data      Json?            // Additional notification data
+  createdAt DateTime         @default(now())
+
+  @@map("notifications")
+}
+
+// NextAuth.js Models
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+  @@map("verification_tokens")
+}
+
+// Enums
+enum UserRole {
+  ADMIN
+  USER
+  AGENT
+}
+
+enum CallStatus {
+  INCOMING
+  ANSWERED
+  MISSED
+  VOICEMAIL
+  TRANSFERRED
+  COMPLETED
+}
+
+enum CallDirection {
+  INBOUND
+  OUTBOUND
+}
+
+enum Sentiment {
+  POSITIVE
+  NEUTRAL
+  NEGATIVE
+}
+
+enum MessageRole {
+  CALLER
+  AI
+  HUMAN
+}
+
+enum CalendarType {
+  NONE
+  GOOGLE
+  OUTLOOK
+  CALENDLY
+  BOOKSY
+}
+
+enum CRMType {
+  NONE
+  HUBSPOT
+  SALESFORCE
+  PIPEDRIVE
+  CLIO
+  HOUSECALL_PRO
+}
+
+enum WorkflowTrigger {
+  CALL_RECEIVED
+  VOICEMAIL_LEFT
+  APPOINTMENT_REQUESTED
+  COMPLAINT_DETECTED
+  VIP_CALLER
+}
+
+enum NotificationType {
+  CALL_MISSED
+  VOICEMAIL_RECEIVED
+  APPOINTMENT_BOOKED
+  WORKFLOW_TRIGGERED
+  SYSTEM_ALERT
+}
