@@ -1,25 +1,19 @@
 import { HeroSection } from '@/components/sections/HeroSection'
-import { ValuePropsSection } from '@/components/sections/ValuePropsSection'
-import { IndustriesPreviewSection } from '@/components/sections/IndustriesPreviewSection'
-import { DemoSection } from '@/components/sections/DemoSection'
-import { TestimonialsSection } from '@/components/sections/TestimonialsSection'
+import { ComparisonSection } from '@/components/sections/ComparisonSection'
+import { FeaturesSection } from '@/components/sections/FeaturesSection'
 import { PricingSection } from '@/components/sections/PricingSection'
-import { FAQSection } from '@/components/sections/FAQSection'
-import { FinalCTASection } from '@/components/sections/FinalCTASection'
-import { LogoCloudSection } from '@/components/sections/LogoCloudSection'
+import { TestimonialsSection } from '@/components/sections/TestimonialsSection'
+import { CTASection } from '@/components/sections/CTASection'
 
 export default function HomePage() {
   return (
     <>
       <HeroSection />
-      <ValuePropsSection />
-      <IndustriesPreviewSection />
-      <DemoSection />
-      <TestimonialsSection />
+      <ComparisonSection />
+      <FeaturesSection />
       <PricingSection />
-      <FAQSection />
-      <LogoCloudSection />
-      <FinalCTASection />
+      <TestimonialsSection />
+      <CTASection />
     </>
   )
 }
