@@ -1,6 +1,4 @@
 import type { Metadata } from 'next'
-import { StackProvider, StackTheme } from "@stackframe/stack";
-import { stackServerApp } from "../stack";
 import { Inter, Manrope } from 'next/font/google'
 import './globals.css'
 import { Navbar } from '@/components/Navbar'
@@ -85,9 +83,9 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
       </head>
-      <body className={`${inter.className} antialiased`}><StackProvider app={stackServerApp}><StackTheme>
+      <body className={`${inter.className} antialiased`}>
         {children}
-      </StackTheme></StackProvider></body>
+      </body>
     </html>
   )
 }
