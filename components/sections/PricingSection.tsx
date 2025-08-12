@@ -1,339 +1,345 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { Check, Star, Zap, Crown, Sparkles } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { Check, Star, ArrowRight, Sparkles } from 'lucide-react'
-import Link from 'next/link'
-import { useState } from 'react'
-import { GHLFormModal } from '@/components/GHLFormModal'
 
-const plans = [
+const platformTiers = [
   {
-    name: 'Starter',
-    monthlyPrice: 29.99,
-    annualPrice: 299.99, // 10 months worth (2 months free)
-    description: 'Perfect for small businesses that just need someone to always pick up the phone.',
+    name: "Starter",
+    price: "$249",
+    period: "/month",
+    description: "Perfect for small businesses getting started with automation",
     features: [
-      '24/7 AI Receptionist (inbound calls only)',
-      'Caller name & details captured in CRM',
-      'Spam/Robo-call filtering',
-      'Custom greeting & business info',
-      'Appointment booking via integrated calendar',
-      'Instant SMS & email confirmations to customers',
-      'Call summaries sent to your inbox'
+              "Custom Branded Platform",
+      "Up to 1,000 contacts",
+      "Basic CRM & Pipeline",
+      "Email & SMS Marketing",
+      "Calendar & Scheduling",
+      "Basic Analytics",
+      "Email Support"
     ],
-    cta: 'Start Free Trial',
-    href: '/contact',
+    popular: false,
+    icon: Zap
+  },
+  {
+    name: "Growth",
+    price: "$349",
+    period: "/month",
+    description: "Ideal for growing businesses that need advanced features",
+    features: [
+      "Everything in Starter",
+      "Up to 10,000 contacts",
+      "Advanced CRM & Automation",
+      "Custom Funnels & Landing Pages",
+      "Advanced Analytics & Reporting",
+      "Team Collaboration Tools",
+      "Priority Support",
+      "API Access"
+    ],
+    popular: true,
+    icon: Star
+  },
+  {
+    name: "Pro",
+    price: "$499",
+    period: "/month",
+    description: "For established businesses that need enterprise-level features",
+    features: [
+      "Everything in Growth",
+      "Unlimited contacts",
+      "Advanced Workflow Automation",
+      "Custom Integrations",
+      "Multi-location Management",
+      "Advanced Security Features",
+      "Dedicated Account Manager",
+      "Custom Training Sessions"
+    ],
+    popular: false,
+    icon: Crown
+  }
+]
+
+const aiAddOns = [
+  {
+    name: "AI Essentials",
+    price: "$99",
+    period: "/month",
+    description: "Perfect for businesses new to AI automation",
+    features: [
+      "200 minutes Voice AI",
+      "Conversation AI",
+      "Reviews AI",
+      "Content AI",
+      "Funnel AI",
+      "Workflow AI Assistant",
+      "Basic AI Analytics"
+    ],
     popular: false
   },
   {
-    name: 'Professional',
-    monthlyPrice: 59.99,
-    annualPrice: 599.99, // 10 months worth (2 months free)
-    description: 'For growing businesses that want more than just call answering.',
+    name: "AI Growth",
+    price: "$149",
+    period: "/month",
+    description: "For businesses ready to scale with AI",
     features: [
-      'Everything in Starter, plus:',
-      'Multi-channel messaging (SMS, email, webchat)',
-      'CRM + pipeline automation for follow-up',
-      'Custom logic workflows (e.g., route VIP clients to owner)',
-      'Real-time dashboard with call volume & booking data',
-      'Multi-calendar & CRM sync (Clio, Housecall Pro, Booksy, etc.)',
-      'Industry-specific FAQ handling for up to 50 questions'
+      "500 minutes Voice AI",
+      "All AI tools included",
+      "Advanced AI Analytics",
+      "Custom AI Training",
+      "Priority AI Support",
+      "AI Performance Reports"
     ],
-    cta: 'Start Free Trial',
-    href: '/contact',
     popular: true
   },
   {
-    name: 'Growth',
-    monthlyPrice: 149.99,
-    annualPrice: 1499.99, // 10 months worth (2 months free)
-    description: 'For busy, multi-location businesses that want full automation.',
+    name: "AI Pro",
+    price: "$179",
+    period: "/month",
+    description: "For high-volume businesses",
     features: [
-      'Everything in Professional, plus:',
-      'Advanced workflow automation (lead nurturing, upsells)',
-      'AI review requests & response management',
-      'Content AI for automated blog posts or promos',
-      'Funnel AI for building sales/booking pages',
-      'Multi-user roles & team notifications (Slack/Teams)',
-      'Deeper analytics (conversion tracking, sentiment)'
+      "750 minutes Voice AI",
+      "All AI tools included",
+      "Custom AI Models",
+      "Advanced Integrations",
+      "Dedicated AI Specialist",
+      "Monthly AI Strategy Sessions"
     ],
-    cta: 'Start Free Trial',
-    href: '/contact',
     popular: false
+  },
+  {
+    name: "AI Unlimited",
+    price: "$199",
+    period: "/month",
+    description: "Unlimited AI automation for unlimited growth",
+    features: [
+      "Unlimited Voice AI minutes",
+      "All AI tools included",
+      "Custom AI Development",
+              "Custom AI Solutions",
+      "24/7 AI Support",
+      "Quarterly AI Strategy Reviews"
+    ],
+    popular: false,
+    unlimited: true
   }
 ]
 
 export function PricingSection() {
-  const [billingCycle, setBillingCycle] = useState<'monthly' | 'annual'>('monthly')
-  const [isModalOpen, setIsModalOpen] = useState(false)
-
-  const getPrice = (plan: typeof plans[0]) => {
-    return billingCycle === 'monthly' ? plan.monthlyPrice : plan.annualPrice
-  }
-
-  const getPeriod = () => {
-    return billingCycle === 'monthly' ? '/month' : '/year'
-  }
-
-  const getSavings = (plan: typeof plans[0]) => {
-    const monthlyTotal = plan.monthlyPrice * 12
-    const annualPrice = plan.annualPrice
-    return monthlyTotal - annualPrice
-  }
-
-  const handleStartTrial = () => {
-    setIsModalOpen(true)
-  }
-
   return (
-    <section className="py-24 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+         <section className="py-32 bg-gradient-to-br from-teal-50 via-emerald-50 to-teal-100">
+      <div className="container mx-auto px-4">
         {/* Section Header */}
+        <div className="text-center mb-16">
+                     <motion.h2
+             initial={{ opacity: 0, y: 20 }}
+             whileInView={{ opacity: 1, y: 0 }}
+             viewport={{ once: true }}
+             className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
+           >
+             Choose Your{' '}
+             <span className="bg-gradient-to-r from-teal-600 to-emerald-600 bg-clip-text text-transparent">
+               Automation Stack
+             </span>
+           </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-xl text-gray-600 max-w-3xl mx-auto"
+          >
+            Pick your platform tier and add AI automation to create the perfect solution for your business.
+          </motion.p>
+        </div>
+
+        {/* Platform Tiers */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          transition={{ delay: 0.2 }}
+          className="mb-32"
         >
-          <h1 className="text-4xl md:text-5xl font-bold font-display text-gray-900 mb-6">
-            Simple, fair pricing—{' '}
-            <span className="gradient-text">unlimited calls</span>{' '}
-            on every plan
-          </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-            Start with our 30-day free trial. No credit card required. 
-            Cancel anytime.
-          </p>
+          <div className="text-center mb-12">
+            <h3 className="text-3xl font-bold text-gray-900 mb-4">Platform Tiers</h3>
+            <p className="text-gray-600">Start with the foundation that fits your business</p>
+          </div>
           
-          {/* Billing Toggle */}
-          <div className="flex items-center justify-center mb-8">
-            <div className="bg-white rounded-full p-1 shadow-lg border border-gray-200">
-              <div className="flex items-center space-x-1">
-                <button
-                  onClick={() => setBillingCycle('monthly')}
-                  className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
-                    billingCycle === 'monthly'
-                      ? 'bg-teal-500 text-white shadow-md'
-                      : 'text-gray-600 hover:text-gray-900'
-                  }`}
-                >
-                  Monthly
-                </button>
-                <button
-                  onClick={() => setBillingCycle('annual')}
-                  className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-200 relative ${
-                    billingCycle === 'annual'
-                      ? 'bg-teal-500 text-white shadow-md'
-                      : 'text-gray-600 hover:text-gray-900'
-                  }`}
-                >
-                  Annual
-                  {billingCycle === 'annual' && (
-                    <span className="absolute -top-2 -right-2 bg-orange-500 text-white text-xs px-2 py-1 rounded-full">
-                      Save 2 months
-                    </span>
-                  )}
-                </button>
-              </div>
-            </div>
-          </div>
+                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto py-16">
+            {platformTiers.map((tier, index) => (
+                             <motion.div
+                 key={tier.name}
+                 initial={{ opacity: 0, y: 30, scale: 0.9 }}
+                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                 viewport={{ once: true }}
+                 transition={{ delay: 0.1 * index, duration: 0.6 }}
+                                    whileHover={{ 
+                     y: -5, 
+                     scale: tier.popular ? 1.03 : 1.01,
+                     boxShadow: "0 20px 40px -12px rgba(0, 0, 0, 0.25)"
+                   }}
+                 className={`relative bg-white rounded-2xl p-8 shadow-lg transition-all duration-500 overflow-visible group ${
+                   tier.popular ? 'ring-2 ring-teal-500' : ''
+                 }`}
+               >
+                {tier.popular && (
+                                     <div className="absolute -top-8 left-1/2 transform -translate-x-1/2">
+                     <span className="bg-gradient-to-r from-teal-600 to-emerald-600 text-white px-4 py-2 rounded-full text-sm font-semibold">
+                       Most Popular
+                     </span>
+                   </div>
+                )}
+                
+                                 <div className="text-center mb-8 relative z-10">
+                   <motion.div 
+                     className="w-20 h-20 bg-gradient-to-r from-teal-600 via-emerald-600 to-teal-700 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300"
+                     whileHover={{ rotate: 360 }}
+                     transition={{ duration: 0.6 }}
+                   >
+                     <tier.icon className="w-10 h-10 text-white" />
+                   </motion.div>
+                   <h4 className="text-2xl font-bold text-gray-900 mb-2 group-hover:text-teal-600 transition-colors duration-300">
+                     {tier.name}
+                   </h4>
+                   <div className="flex items-baseline justify-center mb-2">
+                     <motion.span 
+                       className="text-4xl font-bold bg-gradient-to-r from-teal-600 to-emerald-600 bg-clip-text text-transparent"
+                       animate={{ scale: [1, 1.05, 1] }}
+                       transition={{ duration: 2, repeat: Infinity, delay: index * 0.3 }}
+                     >
+                       {tier.price}
+                     </motion.span>
+                     <span className="text-gray-600 ml-1">{tier.period}</span>
+                   </div>
+                   <p className="text-gray-600">{tier.description}</p>
+                 </div>
 
-          <div className="flex items-center justify-center space-x-4 text-sm text-gray-500">
-            <div className="flex items-center space-x-2">
-              <Check className="w-4 h-4 text-teal-500" />
-              <span>No setup fees</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <Check className="w-4 h-4 text-teal-500" />
-              <span>No contracts</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <Check className="w-4 h-4 text-teal-500" />
-              <span>Cancel anytime</span>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Pricing Cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
-          {plans.map((plan, index) => (
-            <motion.div
-              key={plan.name}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className={`relative ${plan.popular ? 'lg:scale-105' : ''}`}
-            >
-              {plan.popular && (
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                  <span className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-gradient-to-r from-teal-500 to-emerald-500 text-white shadow-lg">
-                    <Star className="w-4 h-4 mr-1" />
-                    Most Popular
-                  </span>
-                </div>
-              )}
-              
-              <div className={`bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border-2 ${
-                plan.popular 
-                  ? 'border-teal-500 shadow-xl' 
-                  : 'border-gray-100'
-              }`}>
-                {/* Plan Header */}
-                <div className="text-center mb-8">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                    {plan.name}
-                  </h3>
-                  <p className="text-gray-600 mb-6">
-                    {plan.description}
-                  </p>
-                  <div className="mb-4">
-                    <span className="text-4xl font-bold text-gray-900">
-                      ${getPrice(plan)}
-                    </span>
-                    <span className="text-gray-600">
-                      {getPeriod()}
-                    </span>
-                  </div>
-                  
-                  {/* Annual Savings Badge */}
-                  {billingCycle === 'annual' && (
-                    <div className="mb-4">
-                      <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-orange-100 text-orange-700">
-                        <Sparkles className="w-3 h-3 mr-1" />
-                        Save ${getSavings(plan).toFixed(0)}
-                      </span>
-                    </div>
-                  )}
-                  
-                  {/* Monthly Equivalent for Annual */}
-                  {billingCycle === 'annual' && (
-                    <p className="text-sm text-gray-500">
-                      ${(getPrice(plan) / 12).toFixed(0)}/month when billed annually
-                    </p>
-                  )}
-                </div>
-
-                {/* Features List */}
                 <ul className="space-y-4 mb-8">
-                  {plan.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-start space-x-3">
-                      {feature.startsWith('Everything in') || feature.includes('(All powered') || feature.includes('(Uses GHL') ? (
-                        <span className="text-gray-500 text-sm font-medium">{feature}</span>
-                      ) : (
-                        <>
-                          <Check className="w-5 h-5 text-teal-500 mt-0.5 flex-shrink-0" />
-                          <span className="text-gray-700">{feature}</span>
-                        </>
-                      )}
+                  {tier.features.map((feature, featureIndex) => (
+                    <li key={featureIndex} className="flex items-start">
+                      <Check className="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
+                      <span className="text-gray-700">{feature}</span>
                     </li>
                   ))}
                 </ul>
 
-                {/* CTA Button */}
-                <Button 
-                  variant={plan.popular ? "gradient" : "outline"}
-                  size="lg"
-                  className="w-full"
-                  onClick={handleStartTrial}
-                >
-                  {plan.cta}
-                  <ArrowRight className="ml-2 w-4 h-4" />
+                                 <Button 
+                   className={`w-full py-3 ${
+                     tier.popular 
+                       ? 'bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-700 hover:to-emerald-700 text-white' 
+                       : 'bg-gray-100 hover:bg-gray-200 text-gray-900'
+                   }`}
+                 >
+                  Choose {tier.name}
                 </Button>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
 
-        {/* Annual Plan Benefits */}
-        {billingCycle === 'annual' && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <div className="bg-gradient-to-r from-teal-50 to-emerald-50 rounded-2xl p-8 border border-teal-200">
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                Why choose annual billing?
-              </h3>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div className="flex items-center space-x-3">
-                  <div className="w-10 h-10 bg-teal-500 rounded-full flex items-center justify-center">
-                    <Sparkles className="w-5 h-5 text-white" />
-                  </div>
-                  <div className="text-left">
-                    <h4 className="font-semibold text-gray-900">Save 2 Months</h4>
-                    <p className="text-gray-600 text-sm">Get 12 months for the price of 10</p>
-                  </div>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <div className="w-10 h-10 bg-teal-500 rounded-full flex items-center justify-center">
-                    <Check className="w-5 h-5 text-white" />
-                  </div>
-                  <div className="text-left">
-                    <h4 className="font-semibold text-gray-900">Lock in Pricing</h4>
-                    <p className="text-gray-600 text-sm">Protect against future price increases</p>
-                  </div>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <div className="w-10 h-10 bg-teal-500 rounded-full flex items-center justify-center">
-                    <Star className="w-5 h-5 text-white" />
-                  </div>
-                  <div className="text-left">
-                    <h4 className="font-semibold text-gray-900">Priority Support</h4>
-                    <p className="text-gray-600 text-sm">Faster response times for annual customers</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        )}
-
-        {/* Additional Info */}
+        {/* AI Add-Ons */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
           viewport={{ once: true }}
+          transition={{ delay: 0.3 }}
+          className="mb-32"
+        >
+          <div className="text-center mb-12">
+            <h3 className="text-3xl font-bold text-gray-900 mb-4">AI Automation Add-Ons</h3>
+            <p className="text-gray-600">Supercharge your platform with AI-powered automation</p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto py-16">
+            {aiAddOns.map((plan, index) => (
+              <motion.div
+                key={plan.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.1 * index }}
+                                 className={`relative bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 overflow-visible ${
+                   plan.unlimited ? 'ring-2 ring-emerald-500 bg-gradient-to-br from-emerald-50 to-teal-50' : ''
+                 } ${plan.popular ? 'ring-2 ring-teal-500' : ''}`}
+              >
+                {plan.unlimited && (
+                                     <div className="absolute -top-7 left-1/2 transform -translate-x-1/2">
+                     <span className="bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-3 py-1 rounded-full text-xs font-semibold flex items-center">
+                       <Sparkles className="w-3 h-3 mr-1" />
+                       Unlimited
+                     </span>
+                   </div>
+                )}
+                {plan.popular && !plan.unlimited && (
+                                     <div className="absolute -top-7 left-1/2 transform -translate-x-1/2">
+                     <span className="bg-teal-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
+                       Popular
+                     </span>
+                   </div>
+                )}
+                
+                <div className="text-center mb-6">
+                  <h4 className="text-xl font-bold text-gray-900 mb-2">{plan.name}</h4>
+                  <div className="flex items-baseline justify-center mb-2">
+                    <span className="text-3xl font-bold text-gray-900">{plan.price}</span>
+                    <span className="text-gray-600 ml-1">{plan.period}</span>
+                  </div>
+                  <p className="text-sm text-gray-600">{plan.description}</p>
+                </div>
+
+                <ul className="space-y-3 mb-6">
+                  {plan.features.map((feature, featureIndex) => (
+                    <li key={featureIndex} className="flex items-start">
+                      <Check className="w-4 h-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                      <span className="text-sm text-gray-700">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                                 <Button 
+                   className={`w-full py-2 text-sm ${
+                     plan.unlimited 
+                       ? 'bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white' 
+                       : plan.popular
+                       ? 'bg-teal-600 hover:bg-teal-700 text-white'
+                       : 'bg-gray-100 hover:bg-gray-200 text-gray-900'
+                   }`}
+                 >
+                  Add {plan.name}
+                </Button>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Combined Pricing CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.4 }}
           className="text-center"
         >
-          <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">
-              All plans include our core features
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-              <div>
-                <div className="w-12 h-12 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Check className="w-6 h-6 text-teal-600" />
-                </div>
-                <h4 className="font-semibold text-gray-900 mb-2">24/7 Availability</h4>
-                <p className="text-gray-600 text-sm">Never miss a call, even on weekends and holidays</p>
-              </div>
-              <div>
-                <div className="w-12 h-12 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Check className="w-6 h-6 text-teal-600" />
-                </div>
-                <h4 className="font-semibold text-gray-900 mb-2">CRM Integration</h4>
-                <p className="text-gray-600 text-sm">Seamlessly integrated with popular CRM systems</p>
-              </div>
-              <div>
-                <div className="w-12 h-12 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Check className="w-6 h-6 text-teal-600" />
-                </div>
-                <h4 className="font-semibold text-gray-900 mb-2">AI-Powered</h4>
-                <p className="text-gray-600 text-sm">Advanced AI handles calls with human-like conversations</p>
-              </div>
+                     <div className="bg-gradient-to-r from-teal-600 to-emerald-600 rounded-2xl p-8 text-white max-w-4xl mx-auto">
+            <h3 className="text-2xl font-bold mb-4">Ready to Build Your Automation Stack?</h3>
+                                      <p className="text-teal-100 mb-6">
+               Get started with our custom automation platform. Contact us to set up your personalized solution.
+             </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button className="bg-white text-blue-600 px-8 py-3 rounded-xl font-semibold hover:bg-gray-100 transition-colors">
+                Get Started
+              </Button>
+              <Button variant="outline" className="border-white text-white px-8 py-3 rounded-xl font-semibold hover:bg-white hover:text-blue-600 transition-colors">
+                Contact Sales
+              </Button>
             </div>
+            <p className="text-blue-200 text-sm mt-4">
+              Save up to $2,400/year by consolidating your tech stack
+            </p>
           </div>
         </motion.div>
       </div>
-
-      {/* GHL Form Modal */}
-      <GHLFormModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </section>
   )
 }

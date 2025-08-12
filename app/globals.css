@@ -84,7 +84,6 @@
   
   .floating-blob {
     @apply absolute rounded-full opacity-10 blur-xl;
-    animation: float 6s ease-in-out infinite;
   }
   
   .section-padding {

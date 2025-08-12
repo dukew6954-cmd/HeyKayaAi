@@ -12,7 +12,7 @@ const testimonials = [
     company: 'Johnson Law Firm',
     avatar: '/avatars/sarah.jpg',
     rating: 5,
-    quote: 'HeyKayaAI has transformed our practice. We never miss client calls, and the appointment booking is seamless. Our clients love the professional, friendly experience.',
+    quote: 'Pavro has transformed our practice. We never miss client calls, and the appointment booking is seamless. Our clients love the professional, friendly experience.',
     industry: 'Law Firm'
   },
   {
@@ -22,7 +22,7 @@ const testimonials = [
     company: 'Rodriguez Auto Repair',
     avatar: '/avatars/mike.jpg',
     rating: 5,
-    quote: 'Since implementing HeyKayaAI, our booking rate has increased by 40%. The bilingual support is a game-changer for our diverse customer base.',
+    quote: 'Since implementing Pavro, our booking rate has increased by 40%. The bilingual support is a game-changer for our diverse customer base.',
     industry: 'Auto Repair'
   },
   {
@@ -32,7 +32,7 @@ const testimonials = [
     company: 'Chen Dental Care',
     avatar: '/avatars/lisa.jpg',
     rating: 5,
-    quote: 'The integration with our existing systems was incredibly smooth. Now we can focus on patient care while HeyKayaAI handles all our scheduling.',
+    quote: 'The integration with our existing systems was incredibly smooth. Now we can focus on patient care while Pavro handles all our scheduling.',
     industry: 'Dental'
   },
   {
@@ -52,7 +52,7 @@ const testimonials = [
     company: 'Garcia Salon',
     avatar: '/avatars/maria.jpg',
     rating: 5,
-    quote: 'Our clients appreciate the immediate response and easy booking. HeyKayaAI feels like having a professional receptionist without the overhead.',
+    quote: 'Our clients appreciate the immediate response and easy booking. Pavro feels like having a professional receptionist without the overhead.',
     industry: 'Salon'
   }
 ]
@@ -91,7 +91,7 @@ export function TestimonialsSection() {
             <span className="gradient-text">everywhere</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            See what our customers are saying about how HeyKayaAI has transformed their business.
+            See what our customers are saying about how Pavro has transformed their business.
           </p>
         </motion.div>
 

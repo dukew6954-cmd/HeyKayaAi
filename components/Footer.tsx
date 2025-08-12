@@ -49,11 +49,11 @@ export function Footer() {
                 <Phone className="w-5 h-5 text-white" />
               </div>
               <span className="text-xl font-bold font-display gradient-text">
-                HeyKayaAI
+                Pavro
               </span>
             </Link>
             <p className="text-gray-300 mb-6 max-w-md">
-              Never miss another call. HeyKayaAI answers, books, and texts back—24/7. 
+              Never miss another call. Pavro answers, books, and texts back—24/7. 
               Friendly, bilingual, and ready to work.
             </p>
             
@@ -61,7 +61,7 @@ export function Footer() {
             <div className="space-y-3">
               <div className="flex items-center space-x-3 text-gray-300">
                 <Mail className="w-4 h-4" />
-                <span>hello@heykaya.ai</span>
+                <span>hello@pavro.ai</span>
               </div>
               <div className="flex items-center space-x-3 text-gray-300">
                 <Phone className="w-4 h-4" />
@@ -69,7 +69,7 @@ export function Footer() {
               </div>
               <div className="flex items-center space-x-3 text-gray-300">
                 <MapPin className="w-4 h-4" />
-                <span>Phoenix, Arizona</span>
+                <span>San Francisco, CA</span>
               </div>
             </div>
           </div>
@@ -161,6 +161,27 @@ export function Footer() {
             <p className="text-gray-400 text-sm">
               © 2024 HeyKayaAI. All rights reserved.
             </p>
+          </div>
+        </div>
+      </div>
+
+      {/* CTA Section */}
+      <div className="bg-gradient-to-r from-teal-600 to-emerald-600 py-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h3 className="text-2xl font-bold text-white mb-4">
+            Start your 14-day free trial—no credit card required.
+          </h3>
+          <p className="text-teal-100 mb-6 max-w-2xl mx-auto">
+            Join thousands of businesses that never miss a call. 
+            Set up in minutes, cancel anytime.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button variant="default" size="lg" asChild>
+              <Link href="/contact">Start Free Trial</Link>
+            </Button>
+            <Button variant="outline" size="lg" asChild>
+              <Link href="/pricing">See Pricing</Link>
+            </Button>
           </div>
         </div>
       </div>
