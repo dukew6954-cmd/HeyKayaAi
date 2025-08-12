@@ -7,18 +7,12 @@ import { Menu, X, ChevronDown } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
 const navigation = [
-  { name: 'Platform', href: '/platform', hasDropdown: true },
+  { name: 'Features', href: '/features' },
   { name: 'Industries', href: '/industries', hasDropdown: true },
   { name: 'Pricing', href: '/pricing' },
   { name: 'About', href: '/about' },
+  { name: 'FAQ', href: '/faq' },
   { name: 'Contact', href: '/contact' }
-]
-
-const platformDropdown = [
-  { name: 'Features', href: '/features', description: 'Core platform capabilities' },
-  { name: 'AI Tools', href: '/ai-tools', description: 'Voice, chat, and workflow AI' },
-  { name: 'Integrations', href: '/integrations', description: 'Connect with your existing tools' },
-  { name: 'Analytics', href: '/analytics', description: 'Track performance and ROI' }
 ]
 
 const industriesDropdown = [
@@ -56,12 +50,12 @@ export function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
             <motion.div 
-              className="w-10 h-10 bg-gradient-to-br from-teal-600 to-emerald-600 rounded-lg flex items-center justify-center relative overflow-hidden"
+              className="w-10 h-10 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center relative overflow-hidden"
               whileHover={{ scale: 1.1, rotate: 5 }}
               whileTap={{ scale: 0.95 }}
             >
               <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-emerald-400 to-teal-400 opacity-0 hover:opacity-100 transition-opacity duration-300"
+                className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 opacity-0 hover:opacity-100 transition-opacity duration-300"
                 animate={{ rotate: 360 }}
                 transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
               />
@@ -95,20 +89,6 @@ export function Navbar() {
                           transition={{ duration: 0.2 }}
                           className="absolute top-full left-0 mt-2 w-64 bg-white rounded-xl shadow-xl border border-gray-100 py-2"
                         >
-                          {item.name === 'Platform' && platformDropdown.map((dropdownItem) => (
-                            <Link
-                              key={dropdownItem.name}
-                              href={dropdownItem.href}
-                              className="block px-4 py-3 text-gray-700 hover:bg-gray-50 transition-colors duration-200"
-                              onClick={() => setActiveDropdown(null)}
-                            >
-                              <div className="font-medium">{dropdownItem.name}</div>
-                              {dropdownItem.description && (
-                                <div className="text-sm text-gray-500">{dropdownItem.description}</div>
-                              )}
-                            </Link>
-                          ))}
-                          
                           {item.name === 'Industries' && industriesDropdown.map((dropdownItem) => (
                             <Link
                               key={dropdownItem.name}
@@ -140,7 +120,7 @@ export function Navbar() {
             <Button variant="outline" size="sm" asChild>
               <Link href="/pricing">See Pricing</Link>
             </Button>
-            <Button size="sm" className="bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-700 hover:to-emerald-700 text-white" asChild>
+            <Button size="sm" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white" asChild>
               <Link href="/contact">Get Started</Link>
             </Button>
           </div>
@@ -191,20 +171,6 @@ export function Navbar() {
                             transition={{ duration: 0.2 }}
                             className="pl-4 mt-2 space-y-2"
                           >
-                            {item.name === 'Platform' && platformDropdown.map((dropdownItem) => (
-                              <Link
-                                key={dropdownItem.name}
-                                href={dropdownItem.href}
-                                className="block py-2 text-gray-600 hover:text-blue-600 transition-colors duration-200"
-                                onClick={() => setIsOpen(false)}
-                              >
-                                <div className="font-medium">{dropdownItem.name}</div>
-                                {dropdownItem.description && (
-                                  <div className="text-sm text-gray-500">{dropdownItem.description}</div>
-                                )}
-                              </Link>
-                            ))}
-                            
                             {item.name === 'Industries' && industriesDropdown.map((dropdownItem) => (
                               <Link
                                 key={dropdownItem.name}

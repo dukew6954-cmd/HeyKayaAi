@@ -4,28 +4,28 @@ import { Button } from '@/components/ui/button'
 
 const footerLinks = {
   product: [
-    { name: 'Features', href: '/#features' },
+    { name: 'Features', href: '/features' },
     { name: 'Pricing', href: '/pricing' },
     { name: 'Industries', href: '/industries' },
-    { name: 'How It Works', href: '/how-it-works' },
+    { name: 'How It Works', href: '/features' },
   ],
   company: [
     { name: 'About', href: '/about' },
     { name: 'Contact', href: '/contact' },
-    { name: 'Careers', href: '/careers' },
+    { name: 'FAQ', href: '/faq' },
     { name: 'Blog', href: '/blog' },
   ],
   support: [
-    { name: 'Help Center', href: '/help' },
+    { name: 'Help Center', href: '/faq' },
     { name: 'Privacy Policy', href: '/privacy' },
     { name: 'Terms of Service', href: '/terms' },
     { name: 'Security', href: '/security' },
   ],
-  integrations: [
-    { name: 'Clio', href: '/integrations/clio' },
-    { name: 'Booksy', href: '/integrations/booksy' },
-    { name: 'Housecall Pro', href: '/integrations/housecall-pro' },
-    { name: 'HubSpot', href: '/integrations/hubspot' },
+  platforms: [
+    { name: 'Google Reviews', href: '/features' },
+    { name: 'Facebook Reviews', href: '/features' },
+    { name: 'Yelp Reviews', href: '/features' },
+    { name: 'Multi-Platform', href: '/features' },
   ],
 }
 
@@ -45,28 +45,28 @@ export function Footer() {
           {/* Brand Section */}
           <div className="lg:col-span-2">
             <Link href="/" className="flex items-center space-x-2 mb-4">
-              <div className="w-8 h-8 bg-gradient-to-br from-teal-500 to-emerald-500 rounded-lg flex items-center justify-center">
-                <Phone className="w-5 h-5 text-white" />
+              <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
+                <span className="text-white font-bold text-lg">P</span>
               </div>
               <span className="text-xl font-bold font-display gradient-text">
                 Pavro
               </span>
             </Link>
             <p className="text-gray-300 mb-6 max-w-md">
-              Never miss another call. Pavro answers, books, and texts back—24/7. 
-              Friendly, bilingual, and ready to work.
+              Get more 5-star reviews automatically. Our AI-powered platform helps local businesses 
+              build their online reputation without breaking the bank.
             </p>
             
             {/* Contact Info */}
             <div className="space-y-3">
-              <div className="flex items-center space-x-3 text-gray-300">
-                <Mail className="w-4 h-4" />
-                <span>hello@pavro.ai</span>
-              </div>
-              <div className="flex items-center space-x-3 text-gray-300">
-                <Phone className="w-4 h-4" />
-                <span>1-800-HEYKAYA</span>
-              </div>
+                          <div className="flex items-center space-x-3 text-gray-300">
+              <Mail className="w-4 h-4" />
+              <span>hello@pavro.com</span>
+            </div>
+            <div className="flex items-center space-x-3 text-gray-300">
+              <Phone className="w-4 h-4" />
+              <span>+1 (555) 123-4567</span>
+            </div>
               <div className="flex items-center space-x-3 text-gray-300">
                 <MapPin className="w-4 h-4" />
                 <span>San Francisco, CA</span>
@@ -125,11 +125,11 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Integrations */}
+          {/* Platforms */}
           <div>
-            <h3 className="font-semibold text-white mb-4">Integrations</h3>
+            <h3 className="font-semibold text-white mb-4">Platforms</h3>
             <ul className="space-y-2">
-              {footerLinks.integrations.map((link) => (
+              {footerLinks.platforms.map((link) => (
                 <li key={link.name}>
                   <Link 
                     href={link.href}
@@ -166,21 +166,21 @@ export function Footer() {
       </div>
 
       {/* CTA Section */}
-      <div className="bg-gradient-to-r from-teal-600 to-emerald-600 py-8">
+      <div className="bg-gradient-to-r from-blue-600 to-purple-600 py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h3 className="text-2xl font-bold text-white mb-4">
             Start your 14-day free trial—no credit card required.
           </h3>
-          <p className="text-teal-100 mb-6 max-w-2xl mx-auto">
-            Join thousands of businesses that never miss a call. 
-            Set up in minutes, cancel anytime.
+          <p className="text-blue-100 mb-6 max-w-2xl mx-auto">
+            Join 500+ businesses that are getting more 5-star reviews. 
+            Set up in 5 minutes, cancel anytime.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button variant="default" size="lg" asChild>
-              <Link href="/contact">Start Free Trial</Link>
+              <Link href="/pricing">Start Free Trial</Link>
             </Button>
             <Button variant="outline" size="lg" asChild>
-              <Link href="/pricing">See Pricing</Link>
+              <Link href="/contact">Schedule Demo</Link>
             </Button>
           </div>
         </div>
