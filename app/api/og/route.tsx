@@ -4,8 +4,8 @@ export const runtime = 'edge'
  
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url)
-  const title = searchParams.get('title') || 'HeyKayaAI'
-  const description = searchParams.get('description') || 'Never miss another call with AI'
+  const title = searchParams.get('title') || 'HeyKaya'
+  const description = searchParams.get('description') || 'AI-Powered Review Management Platform'
  
   return new ImageResponse(
     (
@@ -58,7 +58,7 @@ export async function GET(request: Request) {
               fontFamily: 'system-ui',
             }}
           >
-            HeyKayaAI
+            HeyKaya
           </div>
         </div>
         
@@ -95,7 +95,3 @@ export async function GET(request: Request) {
     },
   )
 }
-
-
-
-

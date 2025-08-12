@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import { Phone, Mail, MessageSquare, Clock, MapPin, Star, Zap } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import ContactForm from '@/components/ContactForm'
+import { ContactForm } from '@/components/ContactForm'
 
 const contactInfo = [
   {
