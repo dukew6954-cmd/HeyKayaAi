@@ -6,22 +6,21 @@ export async function POST(request: NextRequest) {
     const body = await request.json()
     
     // Validation
-    if (!body.email || !body.password || !body.name) {
+    if (!body.email || !body.password) {
       return NextResponse.json(
-        { error: 'Missing required fields' },
+        { error: 'Email and password are required' },
         { status: 400 }
       )
     }
 
-    // Register user using AuthService
-    const { user, token } = await AuthService.register({
+    // Login user using AuthService
+    const { user, token } = await AuthService.login({
       email: body.email,
-      password: body.password,
-      name: body.name
+      password: body.password
     })
 
     return NextResponse.json({
-      message: 'Signup successful!',
+      message: 'Login successful!',
       user,
       token
     }, {
@@ -31,12 +30,19 @@ export async function POST(request: NextRequest) {
     })
 
   } catch (error: any) {
-    console.error('Signup error:', error)
+    console.error('Login error:', error)
     
-    if (error.message === 'User already exists') {
+    if (error.message === 'Invalid credentials') {
       return NextResponse.json(
-        { error: 'User already exists' },
-        { status: 409 }
+        { error: 'Invalid email or password' },
+        { status: 401 }
+      )
+    }
+    
+    if (error.message === 'Account is deactivated') {
+      return NextResponse.json(
+        { error: 'Account is deactivated' },
+        { status: 403 }
       )
     }
     
