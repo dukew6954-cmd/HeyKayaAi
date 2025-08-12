@@ -4,6 +4,7 @@ import './globals.css'
 import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
 import { AnnouncementBar } from '@/components/AnnouncementBar'
+import { SessionProvider } from '@/components/SessionProvider'
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -85,12 +86,14 @@ export default function RootLayout({
         <link rel="manifest" href="/manifest.json" />
       </head>
       <body className={`${inter.className} antialiased`}>
-        <AnnouncementBar />
-        <Navbar />
-        <main className="min-h-screen pt-24">
-          {children}
-        </main>
-        <Footer />
+        <SessionProvider>
+          <AnnouncementBar />
+          <Navbar />
+          <main className="min-h-screen pt-24">
+            {children}
+          </main>
+          <Footer />
+        </SessionProvider>
       </body>
     </html>
   )
